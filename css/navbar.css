@@ -41,14 +41,15 @@ a {
   height: 100px; /* Asegúrate de que tenga un alto definido */
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
-.logo {
+.logo, .logo > img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: Akira;
+  font-family: Amodified;
   color: #c3d417;
 
   font-size: 2vw; /* Tamaño dinámico según el ancho de la pantalla */

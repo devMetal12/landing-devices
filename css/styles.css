@@ -2,13 +2,18 @@ html{
     scroll-behavior: smooth;
 }
 @font-face {
-    font-family: Akira;
-    src: url('../fonts/Akira.otf');
-    }
+  font-family: Akira;
+  src: url('../fonts/Akira.otf');
+  }
 
-    @font-face {
-    font-family: Desolator;
-    src: url('../fonts/Desolator.otf');
+  @font-face {
+  font-family: Desolator;
+  src: url('../fonts/Desolator.otf');
+  }
+
+  @font-face {
+    font-family: Amodified;
+    src: url('../fonts/Amodified.otf');
     }
 
 .section{
