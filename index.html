@@ -41,7 +41,7 @@
           <p>En un mundo donde la sostenibilidad y la eficiencia operativa son más importantes que nunca, Wandl Devices emerge como el aliado estratégico para empresas que buscan innovar sin comprometer el medio ambiente. A través de la integración de sensores IoT y la reutilización de dispositivos existentes, ofrecemos soluciones tecnológicas que optimizan los recursos y reducen los residuos electrónicos.</p>
         </div>
         <video class="demo-phone" autoplay loop muted playsinline>
-          <source src="./assets/demo-phone.mp4" type="video/mp4">
+          <source src="./assets/demo-devices.mp4" type="video/mp4">
         </video>
       </div>
 
@@ -51,14 +51,18 @@
           <p id="module-description">Equipado con características y módulos para facilitar el flujo de tu negocio</p>
           
           <div class="carousel-controls">
-            <button id="prev-btn">◀</button>
-            <button id="next-btn">▶</button>
+            <button id="prev-btn">
+              <img src="./assets/arrow.svg" alt="◀">
+            </button>
+            <button id="next-btn">
+              <img src="./assets/arrow.svg" alt="▶">
+            </button>
           </div>
         </div>
       
-        <video class="demo-phone" id="module-video" autoplay loop muted playsinline>
-          <source id="video-source" src="./assets/demo-phone.mp4" type="video/mp4">
-        </video>
+        <div class="image-container">
+          <img id="module-image" src="./assets/1.png" alt="Demo Image">
+        </div>
       </div>
 
       <div class="section contact" id="contact">
@@ -88,5 +92,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="./js/logo-shrink.js"></script>
+    <script src="./js/carousel.js"></script>
   </body>
 </html>
