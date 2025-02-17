@@ -113,7 +113,7 @@ p {
 
 /* carousel controls */
 #prev-btn img {
-transform: rotate(180deg); /* Flecha original */
+  transform: scaleX(-1); /* Flecha original */
 }
 
 .carousel-controls {

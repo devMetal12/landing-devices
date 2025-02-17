@@ -53,4 +53,20 @@ document.getElementById("info-form").addEventListener("submit", function(event) 
       }
     });
   });
-  
+
+/* full screen */
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.querySelector(".demo-phone");
+
+  video.addEventListener("click", function () {
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { // Firefox
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // Edge
+      video.msRequestFullscreen();
+    }
+  });
+});
