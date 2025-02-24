@@ -155,6 +155,11 @@ p {
     text-align: center;
     width: 250px;
 }
+.carousel-controls button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 
 @media (max-width: 1000px) {
     .modules{

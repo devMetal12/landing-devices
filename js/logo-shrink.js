@@ -1,72 +1,86 @@
 
 ScrollTrigger.create({
-animation: gsap.from(".logo", {
-    y: "50vh",
-    scale: 5,
-    yPercent: -50,
-}),
-scrub: true,
-trigger: ".content",
-start: "top bottom",
-endTrigger: ".content",
-end: "top center",
-});
-
-/* Scroll REveal */
-ScrollReveal({
-    reset: true,
-    distance: '60px',
-    duration: 500,
-    delay: 0
-})
-
-ScrollReveal().reveal('.text-box');
-ScrollReveal().reveal('.demo-phone');
-ScrollReveal().reveal('.image-container')
-
-
-/* contact */
-document.getElementById("info-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+  animation: gsap.from(".logo", {
+      y: "50vh",
+      scale: 5,
+      yPercent: -50,
+  }),
+  scrub: true,
+  trigger: ".content",
+  start: "top bottom",
+  endTrigger: ".content",
+  end: "top center",
+  });
   
-    // Capturar los datos del formulario
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const message = document.getElementById("message").value;
+  /* Scroll REveal */
+  ScrollReveal({
+      reset: true,
+      distance: '60px',
+      duration: 500,
+      delay: 0
+  })
   
-    // Simulación de envío
-    console.log("Formulario enviado:", { name, email, phone, message });
+  ScrollReveal().reveal('.text-box');
+  ScrollReveal().reveal('.demo-phone');
+  ScrollReveal().reveal('.image-container');
   
-    // Animación de confirmación
-    gsap.to("#info-form", {
-      opacity: 0,
-      y: -20,
-      duration: 0.5,
-      onComplete: () => {
-        document.querySelector(".text-box").innerHTML = `
-          <h2>¡Gracias por tu interés!</h2>
-          <p>Hemos recibido tu solicitud y te contactaremos pronto.</p>
-        `;
+  /* contact */
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("info-form");
+    const successMessage = document.createElement("p");
+    successMessage.textContent = "¡Mensaje enviado con éxito!";
+    successMessage.style.color = "green";
+    successMessage.style.fontWeight = "bold";
+    successMessage.style.display = "none";
+    form.appendChild(successMessage);
   
-        gsap.to(".text-box", { opacity: 1, y: 0, duration: 0.5 });
-      }
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const formData = new FormData(form);
+        const params = new URLSearchParams();
+        formData.forEach((value, key) => {
+            params.append(key, value);
+        });
+        
+        fetch("https://formsubmit.co/el/jagoji", {
+            method: "POST",
+            body: params,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                successMessage.style.display = "block";
+                form.reset();
+            } else {
+                alert("Hubo un error al enviar el mensaje.");
+            }
+        })
+        .catch(error => {
+            alert("Error de conexión. Inténtalo nuevamente.");
+            console.error("Error:", error);
+        });
     });
   });
-
-/* full screen */
-document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector(".demo-phone");
-
-  video.addEventListener("click", function () {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.mozRequestFullScreen) { // Firefox
-      video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { // Edge
-      video.msRequestFullscreen();
-    }
-  });
-});
+  
+  /* full screen */
+  document.addEventListener("DOMContentLoaded", function () {
+      const video = document.querySelector(".demo-phone");
+    
+      video.addEventListener("click", function () {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { // Firefox
+          video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { // Chrome, Safari y Opera
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { // Edge
+          video.msRequestFullscreen();
+        }
+      });
+    });
+    
